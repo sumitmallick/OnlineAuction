@@ -14,19 +14,10 @@ import json
 import os
 import dj_database_url
 
-from django.core.exceptions import ImproperlyConfigured
 
-with open('secrets.json') as f:
-    secrets = json.loads(f.read())
 
-def get_secret(setting, secrets=secrets):
-    try:
-        return secrets[setting]
-    except KeyError:
-        error_msg = 'Set the {0} environment variable'.format(setting)
-        raise ImproperlyConfigured(error_msg)
 
-LOGIN_REDIRECT_URL = "view_product"
+LOGIN_REDIRECT_URL = "http://127.0.0.1:8000/viewproduct/"
 LOGIN_URL = "/accounts/login/"
 
 LOGOUT_REDIRECT_URL = "/accounts/login/"
@@ -138,7 +129,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_URL = 'core/static/'
+STATIC_URL = '/static/'
 
 STATIC_ROOT = BASE_DIR
 
@@ -146,7 +137,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR + MEDIA_URL
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'core/static'),
+    os.path.join(BASE_DIR, 'static'),
     os.path.join(BASE_DIR, 'media'),
 )
 
@@ -154,8 +145,8 @@ STATICFILES_DIRS = (
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = get_secret('GMAIL_SMTP_USER')
-EMAIL_HOST_PASSWORD = get_secret('GMAIL_SMTP_PASSWORD')
+EMAIL_HOST_USER = "sdfdsf"
+EMAIL_HOST_PASSWORD = "dfsd"
 
 # STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
@@ -166,5 +157,5 @@ EMAIL_HOST_PASSWORD = get_secret('GMAIL_SMTP_PASSWORD')
 # MEDIA_URL = 'http://%s.s3.amazonaws.com/picktheproducts/' % AWS_STORAGE_BUCKET_NAME
 # DEFAULT_FILE_STORAGE = "storages.backends.s3boto.S3BotoStorage"
 
-PAYPAL_RECEIVER_EMAIL = get_secret('PAYPAL_EMAIL')
+PAYPAL_RECEIVER_EMAIL = "dbfbd"
 PAYPAL_TEST = True

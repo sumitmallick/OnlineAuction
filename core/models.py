@@ -11,12 +11,25 @@ from django.template.context_processors import request
 
 def getImage(instance, filename):
     return "core/image_{0}_{1}".format(str(time()),filename)
+     
+
+product_type = (
+        ('antique','Antique'),
+        ('footwear','Footwear'),
+        ('accessories','Accessories'),
+        ('electronics','Electronics'),
+        ('sports','Sports'),
+        ('home appliances','Home Appliances'),
+        ('books','Books'),
+        ('furniture','Furniture'),
+        ('tv & appliances','TV & Appliances')
+    )
 
 
 class Product(models.Model):
     product_name = models.CharField(max_length=100)
     image = models.ImageField(upload_to=getImage)
-    category = models.CharField(max_length=100)
+    category = models.CharField(choices=product_type, max_length=100)
     description = models.TextField(max_length=300)
     minimum_price = models.IntegerField(null=True)
     bid_end_date = models.DateField(default=None)
@@ -24,7 +37,7 @@ class Product(models.Model):
     updated = models.DateTimeField(auto_now=True)
 
     def __unicode__(self):
-        return self.id
+        return self.product_name
 
 
 class Seller(models.Model):

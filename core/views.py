@@ -80,22 +80,22 @@ def mailing(bidder, seller):
             server.close()
 
 
-def send_email():
-    product = Product.objects.all()
-    for item in product:
-        if(item.bid_end_date <= datetime.date.today()):
-            bidder = User.objects.filter(bidder__product_id=item.id).annotate(max = Max('bidder__bid_amount')).values('email').order_by('-max')
-            seller = User.objects.filter(seller__product_id=item.id).values('email')
-            if(bidder):
-                mailing(bidder, seller)
-            else:
-                mailing(0, seller)
-            Bidder.objects.filter(product_id=item.id).delete()
-            Seller.objects.filter(product_id=item.id).delete()
-            Product.objects.get(id=item.id).delete()
+# def send_email():
+#     product = Product.objects.all()
+#     for item in product:
+#         if(item.bid_end_date <= datetime.date.today()):
+#             bidder = User.objects.filter(bidder__product_id=item.id).annotate(max = Max('bidder__bid_amount')).values('email').order_by('-max')
+#             seller = User.objects.filter(seller__product_id=item.id).values('email')
+#             if(bidder):
+#                 mailing(bidder, seller)
+#             else:
+#                 mailing(0, seller)
+#             Bidder.objects.filter(product_id=item.id).delete()
+#             Seller.objects.filter(product_id=item.id).delete()
+#             Product.objects.get(id=item.id).delete()
 
 def index(request):
-    send_email()
+    # send_email()
     return render(request, 'core/index.html')
 
 

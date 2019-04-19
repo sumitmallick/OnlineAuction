@@ -1,7 +1,8 @@
 {% extends 'core/login_base.html' %}
 {% load staticfiles %}
     {% block content %}
-        <form class="form-signin" method="post" action="{% url 'login' %}">{% csrf_token %}
+        <form class="form-signin" method="post" action="{% url 'login' %}">
+            {% csrf_token %}
             <h2 class="form-signin-heading">Please sign in</h2>
             {% if form.errors %}
                 <p style="color: red">Your username and password didn't match. Please try again.</p>
