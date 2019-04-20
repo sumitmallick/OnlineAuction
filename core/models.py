@@ -49,6 +49,20 @@ class Seller(models.Model):
     def __unicode__(self):
         return str(self.user_name)
 
+
+
+
+class Dis(models.Model):
+    disc = models.TextField(max_length=300)
+    
+    def __unicode__(self):
+        return str(self.disc)
+
+
+
+
+
+
 class Bidder(models.Model):
     numeric = RegexValidator(r'^[0-9]*$', 'Only numerics are allowed.')
 

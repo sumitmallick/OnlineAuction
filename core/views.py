@@ -15,7 +15,8 @@ from django.views.decorators.csrf import csrf_protect
 from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
-from .models import Product, Bidder, Seller
+from .models import Product, Bidder, Seller,Dis
+from django.views.generic import ListView, TemplateView
 
 def mailing(bidder, seller):
     template = loader.get_template("core/college_mail.html")
@@ -117,7 +118,12 @@ def save_bid(request):
                     y.save()
                     a = 1
             if not a:
-                obj = Bidder(user_name=request.user, product_id=Product.objects.get(id=request.POST.get('product_id')), bid_amount=int(request.POST.get('bid_amount')))
+                obj = Bidder(user_name=request.user, product_id = Product.objects.get(id=request.POST.get('product_id')), bid_amount=int(request.POST.get('bid_amount')))
                 obj.save()
             return HttpResponseRedirect(reverse('view_product'))
     return render(request, 'core/product_detail.html', context)
+
+
+class Disc(TemplateView):
+    template_name='core/bidding.html'
+

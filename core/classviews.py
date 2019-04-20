@@ -68,3 +68,5 @@ class BidderListView(ListView):
         context = super(BidderListView, self).get_context_data(**kwargs)
         context["product_id"] = self.kwargs['pk']
         return context
+
+
