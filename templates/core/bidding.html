@@ -81,8 +81,12 @@
                 <li><a href="#section-industries" class="nav-link">Industries</a></li>
                 <li><a href="#section-blog" class="nav-link">Blog</a></li>
                 <li><a href="#section-contact" class="nav-link">Contact</a></li>
+                {% if not request.user.is_authenticated %}
                 <li><a href="http://127.0.0.1:8000/accounts/login/?next=/" class="nav-link">Login</a></li>
-                
+                {% endif %}
+                {% if request.user.is_authenticated %}
+                <li><a href="{% url 'logout' %}" class="nav-link">Logout</a></li>
+                {% endif %}
               </ul>
             </nav>
           </div>

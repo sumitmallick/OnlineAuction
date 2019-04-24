@@ -15,7 +15,7 @@ import django
 from django.conf import settings
 from django.views.decorators.csrf import csrf_protect
 from django.urls import reverse
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.models import User
 from .models import Product, Bidder, Seller,Dis
 from django.views.generic import ListView, TemplateView
@@ -126,3 +126,5 @@ def save_bid(request):
     return render(request, 'core/product_detail.html', context)
 
 
+def bid_details(request):
+    return HttpResponse("Redirect Page")

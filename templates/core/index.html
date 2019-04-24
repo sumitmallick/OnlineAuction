@@ -81,8 +81,13 @@
                 <li><a href="#section-industries" class="nav-link">Industries</a></li>
                 <li><a href="#section-blog" class="nav-link">Blog</a></li>
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
-                <li><a href="http://127.0.0.1:8000/accounts/login/?next=/" class="nav-link">Login</a></li>
-                
+                {% if not request.user.is_authenticated %}
+                <li><a href="accounts/login/" class="nav-link">Login</a></li>
+                {% endif %}
+                {% if request.user.is_authenticated %}
+                <li><p style="color: white">{{request.user}}</p></li>
+                <li><a href="{% url 'logout' %}" class="nav-link">Logout</a></li>
+                {% endif %}
               </ul>
             </nav>
           </div>
@@ -104,8 +109,12 @@
 
             <h1 class="text-white font-weight-light text-uppercase font-weight-bold" data-aos="fade-up">We Make Shipping</h1>
             <p class="mb-5" data-aos="fade-up" data-aos-delay="100">A Logistics Company</p>
-            <p data-aos="fade-up" data-aos-delay="200"><a href="/bidding" class="btn btn-primary py-3 px-5 text-white">Start Bidding!</a></p>
-
+            {% if user.is_authenticated %}
+            <p data-aos="fade-up" data-aos-delay="200"><a href="{% url 'view_product' %}" class="btn btn-primary py-3 px-5 text-white">Start Bidding!</a></p>
+            {% endif %}
+            {% if not user.is_authenticated %}
+            <p data-aos="fade-up" data-aos-delay="200"><a href="accounts/login/" class="btn btn-primary py-3 px-5 text-white">Start Bidding!</a></p>
+            {% endif %}
 
           </div>
         </div>

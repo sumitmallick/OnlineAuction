@@ -17,7 +17,7 @@ import dj_database_url
 
 
 
-LOGIN_REDIRECT_URL = "http://127.0.0.1:8000/viewproduct/"
+LOGIN_REDIRECT_URL = "/"
 LOGIN_URL = "/accounts/login/"
 
 LOGOUT_REDIRECT_URL = "/accounts/login/"

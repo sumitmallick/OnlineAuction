@@ -50,7 +50,8 @@ urlpatterns = [
     path('register_user/', UserCreateView.as_view(), name="register"),
     path('deleteproduct/<int:pk>', login_required(ProductDelete.as_view()), name="delete_product"),
     path('bidderlist/<int:pk>', login_required(BidderListView.as_view()), name="bidder_list"),
-    path('logout/', logout_then_login, name='logout')
+    path('logout/', logout_then_login, name='logout'),
+    path('page/', login_required(core.views.save_bid),name='page')
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
