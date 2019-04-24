@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.shortcuts import render_to_response
 # from classviews import *
 import datetime
+from django.core.mail import send_mail
+from django.core.mail import EmailMessage
 from django.db.models import Max
 import smtplib
 from django.template import loader
@@ -123,7 +125,4 @@ def save_bid(request):
             return HttpResponseRedirect(reverse('view_product'))
     return render(request, 'core/product_detail.html', context)
 
-
-class Disc(TemplateView):
-    template_name='core/bidding.html'
 

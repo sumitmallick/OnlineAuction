@@ -1,8 +1,7 @@
 from django.urls import path, include
 from django.contrib import admin
 import core.views
-from .views import Disc
-from .classviews import BidderListView, ProductDelete, UserCreateView
+from .classviews import BidderListView, ProductDelete, UserCreateView, Disc
 from .classviews import ProductDetailView, AddProductView, ProductView
 from django.contrib.auth.decorators import login_required
 from django.conf.urls.static import static
@@ -13,7 +12,7 @@ urlpatterns = [
     
     path('', core.views.index, name="index"),
 
-    path('ghgh/',login_required( Disc.as_view()), name='bidding'),
+    path('/nitin/',Disc.as_view(), name='bidding'),
     
     path('viewproduct/', login_required(ProductView.as_view()), name="view_product"),
     path('addproduct/', login_required(AddProductView.as_view()), name="add_product"),

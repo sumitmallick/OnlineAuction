@@ -1,4 +1,4 @@
-from django.views.generic import ListView
+from django.views.generic import ListView, TemplateView
 from django.views.generic.detail import DetailView
 from django.conf.urls import url
 from django.views.generic.edit import UpdateView, CreateView
@@ -69,4 +69,10 @@ class BidderListView(ListView):
         context["product_id"] = self.kwargs['pk']
         return context
 
+
+
+
+
+class Disc(TemplateView):
+    template_name='core/bidding.html'
 

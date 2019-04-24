@@ -76,6 +76,7 @@
                 <li><a href="{% url 'add_product' %}" style="padding-left: 20px"><span class="glyphicon glyphicon-plus"
                                                                                        aria-hidden="true"></span> Add
                     Item</a></li>
+                    <li><p style="color:white;">{{ request.user.first_name }}</p></li>
                 <li><a href="{% url 'logout' %}"><span
                         class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Logout</a>
                 </li>
